@@ -1,0 +1,28 @@
+apiVersion: v2
+appVersion: 2.0.0
+description: A Helm chart for vSphere CSI Driver
+engine: gotpl
+home: https://github.com/giantswarm/vsphere-csi-driver-app
+icon: https://github.com/kubernetes-sigs/vsphere-csi-driver/blob/master/docs/images/vmware_logo.png
+keywords:
+  - vsphere
+  - vmware
+  - csi
+maintainers:
+  - name: chogan
+    email: chogan@vmware.com
+  - name: Myles Gray
+    email: myles@vmware.com
+name: vsphere-csi
+sources:
+  - https://github.com/kubernetes-sigs/vsphere-csi-driver
+version: [[ .Version ]]
+
+# TODO add dependency on our app?
+#dependencies: # A list of the chart requirements (optional)
+#- name: vsphere-cpi
+#  version: 0.2.3
+#  repository: https://charts.helm.sh/stable
+#  enabled: false
+
+## TODO add monitoring service
