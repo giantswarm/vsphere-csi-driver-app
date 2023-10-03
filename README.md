@@ -1,6 +1,7 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/{APP-NAME}-app.svg?style=shield)](https://circleci.com/gh/giantswarm/{APP-NAME}-app)
-
 # {APP-NAME} chart
+
+This app has been archived on behalf of: https://github.com/giantswarm/cloud-provider-vsphere-app/tree/main/helm/cloud-provider-vsphere/charts/vsphere-csi-driver
+
 
 Giant Swarm offers a {APP-NAME} App which can be installed in workload clusters.
 Here we define the {APP-NAME} chart with its templates and default configuration.
