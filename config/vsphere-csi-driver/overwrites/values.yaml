@@ -1,0 +1,35 @@
+config:
+  clusterId: ""
+  vcenter: ""
+  username: ""
+  password: ""
+  datacenter: ""
+  region: ""
+  zone: ""
+  thumbprint: ""
+
+storageClass:
+  enabled: true
+  reclaimPolicy: "Delete"
+  fileSystem: "ext4"
+  # storageProfileName: "vSAN Default Storage Policy"
+
+internalFeatureStates:
+  topologyPreferentialDatastores:
+    enabled: false
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  seccompProfile:
+    type: RuntimeDefault
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault

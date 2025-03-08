@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: vsphere-csi-node
+  namespace: vmware-system-csi
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: wait-for-crd
+          image: gsoci.azurecr.io/{{ .Values.initContainer.image.name }}:{{ .Values.initContainer.image.tag }}
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Waiting for CRD csinodetopologies.cns.vmware.com to be registered..."
+              attempt=0
+              max_attempts=30
+              while ! kubectl get crd csinodetopologies.cns.vmware.com >/dev/null 2>&1; do
+                attempt=$((attempt+1))
+                if [ "$attempt" -ge "$max_attempts" ]; then
+                  echo "CRD not found after $max_attempts attempts, exiting."
+                  exit 1
+                fi
+                echo "Attempt $attempt/$max_attempts: CRD not found, retrying in 10s..."
+                sleep 10
+              done
+              echo "CRD csinodetopologies.cns.vmware.com found."
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "256Mi"
+              cpu: "100m"

@@ -1,0 +1,18 @@
+apiVersion: v2
+name: vsphere-csi-driver
+# repo: kubernetes-sigs/vsphere-csi-driver
+appVersion: 3.3.0
+# repo: kubernetes-sigs/vsphere-csi-driver
+version: 3.3.0
+description: A Helm chart for vSphere Cloud Provider Interface Manager (CPI)
+home: https://github.com/giantswarm/cloud-provider-vsphere-app
+keywords:
+  - vsphere
+  - vmware
+  - csi
+icon: https://raw.githubusercontent.com/kubernetes/cloud-provider-vsphere/master/docs/vmware_logo.png
+sources:
+  - https://github.com/kubernetes-sigs/vsphere-csi-driver
+  - https://github.com/kubernetes-sigs/vsphere-csi-driver/blob/release-2.7/manifests/vanilla/vsphere-csi-driver.yaml
+annotations:
+  application.giantswarm.io/team: "rocket"

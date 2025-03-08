@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    {{- include "labels.common" $ | nindent 4 }}
+  name: vsphere-csi-node-initcontainer-clusterrolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vsphere-csi-node-role-initcontainer
+subjects:
+- kind: ServiceAccount
+  name: vsphere-csi-node
+  namespace: '{{ .Release.Namespace }}'
