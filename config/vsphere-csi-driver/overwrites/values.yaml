@@ -11,6 +11,10 @@ containerSecurityContext:
   runAsUser: 65532
   seccompProfile:
     type: RuntimeDefault
+initContainer:
+  image:
+    name: giantswarm/kubectl
+    tag: v1.29.9
 internalFeatureStates:
   topologyPreferentialDatastores:
     enabled: false

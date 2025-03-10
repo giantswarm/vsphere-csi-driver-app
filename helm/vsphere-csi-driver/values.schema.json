@@ -111,6 +111,32 @@
           }
         }
       },
+      "initContainer": {
+        "additionalProperties": false,
+        "title": "Init container",
+        "description": "Configuration of init container",
+        "type": "object",
+        "properties": {
+          "image": {
+            "additionalProperties": false,
+            "title": "Image",
+            "description": "Configuration of init container image",
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "name",
+                "type": "string",
+                "default": "giantswarm/kubectl"
+              },
+              "tag": {
+                "title": "tag",
+                "type": "string",
+                "default": "v1.29.9"
+              }
+            }
+          }
+        }
+      },
       "internalFeatureStates": {
         "additionalProperties": false,
         "title": "Internal feature states",
