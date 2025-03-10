@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  pv-to-backingdiskobjectid-mapping: "false"
+  topology-preferential-datastores: '{{ .Values.internalFeatureStates.topologyPreferentialDatastores.enabled
+    }}'
+  trigger-csi-fullsync: "false"
+kind: ConfigMap
+metadata:
+  labels:
+    {{- include "labels.common" $ | nindent 4 }}
+  name: internal-feature-states.csi.vsphere.vmware.com
+  namespace: '{{ .Release.Namespace }}'

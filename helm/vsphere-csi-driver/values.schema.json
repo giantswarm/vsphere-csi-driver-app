@@ -1,0 +1,212 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "config": {
+            "type": "object",
+            "title": "config",
+            "description": "Configuration of vSphere endpoint",
+            "required": [
+                "clusterId",
+                "vcenter",
+                "datacenter"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "title": "Cluster ID"
+                },
+                "datacenter": {
+                    "type": "string",
+                    "title": "Datacenter"
+                },
+                "password": {
+                    "type": "string",
+                    "title": "Password"
+                },
+                "region": {
+                    "type": "string",
+                    "title": "Region"
+                },
+                "thumbprint": {
+                    "type": "string",
+                    "title": "SSL Thumbprint"
+                },
+                "username": {
+                    "type": "string",
+                    "title": "Username"
+                },
+                "vcenter": {
+                    "type": "string",
+                    "title": "vCenter address"
+                },
+                "zone": {
+                    "type": "string",
+                    "title": "Zone"
+                }
+            }
+        },
+        "containerSecurityContext": {
+            "type": "object",
+            "title": "Container schema context",
+            "description": "Configuration of container-level security context",
+            "additionalProperties": false,
+            "properties": {
+                "allowPrivilegeEscalation": {
+                    "type": "boolean",
+                    "title": "Allow privilege escalation",
+                    "default": false
+                },
+                "capabilities": {
+                    "type": "object",
+                    "title": "Capabilities",
+                    "description": "Configuration of container capabilities",
+                    "additionalProperties": false,
+                    "properties": {
+                        "drop": {
+                            "type": "array",
+                            "title": "Drop",
+                            "description": "List of capabilities to drop",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "default": [
+                                "ALL"
+                            ]
+                        }
+                    }
+                },
+                "runAsGroup": {
+                    "type": "integer",
+                    "title": "Run as group",
+                    "default": 65532
+                },
+                "runAsNonRoot": {
+                    "type": "boolean",
+                    "title": "Run as non-root",
+                    "default": true
+                },
+                "runAsUser": {
+                    "type": "integer",
+                    "title": "Run as user",
+                    "default": 65532
+                },
+                "seccompProfile": {
+                    "type": "object",
+                    "title": "Seccomp profile",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "title": "Seccomp profile type",
+                            "default": "RuntimeDefault"
+                        }
+                    }
+                }
+            }
+        },
+        "initContainer": {
+            "type": "object",
+            "title": "Init container",
+            "description": "Configuration of init container",
+            "additionalProperties": false,
+            "properties": {
+                "image": {
+                    "type": "object",
+                    "title": "Image",
+                    "description": "Configuration of init container image",
+                    "additionalProperties": false,
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "name",
+                            "default": "giantswarm/kubectl"
+                        },
+                        "tag": {
+                            "type": "string",
+                            "title": "tag",
+                            "default": "v1.29.9"
+                        }
+                    }
+                }
+            }
+        },
+        "internalFeatureStates": {
+            "type": "object",
+            "title": "Internal feature states",
+            "description": "Configuration of internal feature states",
+            "additionalProperties": false,
+            "properties": {
+                "topologyPreferentialDatastores": {
+                    "type": "object",
+                    "title": "Topology preferential datastores",
+                    "description": "Configuration of topology preferential datastores",
+                    "additionalProperties": false,
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "enabled",
+                            "default": false
+                        }
+                    }
+                }
+            }
+        },
+        "podSecurityContext": {
+            "type": "object",
+            "title": "Pod security context",
+            "description": "Configuration of pod-level security context",
+            "additionalProperties": false,
+            "properties": {
+                "runAsNonRoot": {
+                    "type": "boolean",
+                    "title": "runAsNonRoot",
+                    "default": true
+                },
+                "seccompProfile": {
+                    "type": "object",
+                    "title": "Seccomp profile",
+                    "description": "Configuration of seccomp profile",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "title": "type",
+                            "default": "RuntimeDefault"
+                        }
+                    }
+                }
+            }
+        },
+        "storageClass": {
+            "type": "object",
+            "title": "StorageClass",
+            "description": "Configuration of storage class",
+            "additionalProperties": false,
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "default": true
+                },
+                "fileSystem": {
+                    "type": "string",
+                    "title": "Filesystem",
+                    "description": "Default filesystem to use for volumes",
+                    "default": "ext4"
+                },
+                "reclaimPolicy": {
+                    "type": "string",
+                    "title": "Reclaim Policy",
+                    "default": "Delete"
+                }
+            }
+        }
+    }
+}

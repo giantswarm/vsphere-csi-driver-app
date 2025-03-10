@@ -1,0 +1,184 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    {{- include "labels.common" $ | nindent 4 }}
+  name: vsphere-csi-node
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  selector:
+    matchLabels:
+      app: vsphere-csi-node
+  template:
+    metadata:
+      labels:
+        app: vsphere-csi-node
+        role: vsphere-csi
+    spec:
+      containers:
+      - args:
+        - --v=5
+        - --csi-address=$(ADDRESS)
+        - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+        env:
+        - name: ADDRESS
+          value: /csi/csi.sock
+        - name: DRIVER_REG_SOCK_PATH
+          value: /var/lib/kubelet/plugins/csi.vsphere.vmware.com/csi.sock
+        image: gsoci.azurecr.io/giantswarm/csi-node-driver-registrar:v2.10.1
+        livenessProbe:
+          exec:
+            command:
+            - /csi-node-driver-registrar
+            - --kubelet-registration-path=/var/lib/kubelet/plugins/csi.vsphere.vmware.com/csi.sock
+            - --mode=kubelet-registration-probe
+          initialDelaySeconds: 3
+        name: node-driver-registrar
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+        - mountPath: /registration
+          name: registration-dir
+      - args:
+        - --fss-name=internal-feature-states.csi.vsphere.vmware.com
+        - --fss-namespace=$(CSI_NAMESPACE)
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: CSI_ENDPOINT
+          value: unix:///csi/csi.sock
+        - name: MAX_VOLUMES_PER_NODE
+          value: "59"
+        - name: X_CSI_MODE
+          value: node
+        - name: X_CSI_SPEC_REQ_VALIDATION
+          value: "false"
+        - name: X_CSI_SPEC_DISABLE_LEN_CHECK
+          value: "true"
+        - name: LOGGER_LEVEL
+          value: PRODUCTION
+        - name: CSI_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODEGETINFO_WATCH_TIMEOUT_MINUTES
+          value: "1"
+        image: gsoci.azurecr.io/giantswarm/csi-vsphere-driver:v3.3.0
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: healthz
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
+        name: vsphere-csi-node
+        ports:
+        - containerPort: 9808
+          name: healthz
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+            - SYS_ADMIN
+          privileged: true
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+        - mountPath: /var/lib/kubelet
+          mountPropagation: Bidirectional
+          name: pods-mount-dir
+        - mountPath: /dev
+          name: device-dir
+        - mountPath: /sys/block
+          name: blocks-dir
+        - mountPath: /sys/devices
+          name: sys-devices-dir
+      - args:
+        - --v=4
+        - --csi-address=/csi/csi.sock
+        image: gsoci.azurecr.io/giantswarm/livenessprobe:v2.12.0
+        name: liveness-probe
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      initContainers:
+      - command:
+        - /bin/bash
+        - -c
+        - |
+          echo "Waiting for CRD csinodetopologies.cns.vmware.com to be registered..."
+          attempt=0
+          max_attempts=30
+          while ! kubectl get crd csinodetopologies.cns.vmware.com >/dev/null 2>&1; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge "$max_attempts" ]; then
+              echo "CRD not found after $max_attempts attempts, exiting."
+              exit 1
+            fi
+            echo "Attempt $attempt/$max_attempts: CRD not found, retrying in 10s..."
+            sleep 10
+          done
+          echo "CRD csinodetopologies.cns.vmware.com found."
+        image: gsoci.azurecr.io/{{ .Values.initContainer.image.name }}:{{ .Values.initContainer.image.tag
+          }}
+        name: wait-for-crd
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+      nodeSelector:
+        kubernetes.io/os: linux
+      priorityClassName: system-node-critical
+      serviceAccountName: vsphere-csi-node
+      tolerations:
+      - effect: NoExecute
+        operator: Exists
+      - effect: NoSchedule
+        operator: Exists
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/plugins_registry
+          type: Directory
+        name: registration-dir
+      - hostPath:
+          path: /var/lib/kubelet/plugins/csi.vsphere.vmware.com
+          type: DirectoryOrCreate
+        name: plugin-dir
+      - hostPath:
+          path: /var/lib/kubelet
+          type: Directory
+        name: pods-mount-dir
+      - hostPath:
+          path: /dev
+        name: device-dir
+      - hostPath:
+          path: /sys/block
+          type: Directory
+        name: blocks-dir
+      - hostPath:
+          path: /sys/devices
+          type: Directory
+        name: sys-devices-dir
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

@@ -1,0 +1,20 @@
+{{- with .Values.storageClass }}
+{{- if .enabled }}
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  labels:
+    {{- include "labels.common" $ | nindent 4 }}
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  name: csi-vsphere-sc-default
+provisioner: csi.vsphere.vmware.com
+reclaimPolicy: {{ .reclaimPolicy }}
+allowVolumeExpansion: true
+parameters:
+  {{- if .storageProfileName }}
+  storagepolicyname: {{ .storageProfileName | quote }}
+  {{- end }}
+  csi.storage.k8s.io/fstype: {{ .fileSystem }}
+{{- end }}
+{{- end }}

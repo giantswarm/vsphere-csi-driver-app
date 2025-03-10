@@ -7,4 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add upstream chart at `v3.3.0`.
+- Add repo scaffolding to generate the chart.
+
 [Unreleased]: https://github.com/giantswarm/REPOSITORY_NAME/tree/master
