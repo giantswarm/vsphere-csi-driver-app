@@ -7,12 +7,16 @@ workflows:
     jobs:
       - architect/push-to-app-catalog:
           context: "architect"
-          # executor: "app-build-suite" # uncomment this if you want automatic metadata generation
-          name: "package and push {APP-NAME} chart"
-          app_catalog: "giantswarm-playground-catalog"
-          app_catalog_test: "giantswarm-playground-test-catalog"
-          chart: "{APP-NAME}"
+          executor: "app-build-suite"
+          name: "push-to-default-app-catalog"
+          app_catalog: "default-catalog"
+          app_catalog_test: "default-test-catalog"
+          chart: "vsphere-csi-driver"
           # Trigger job on git tag.
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore:
+                - main
+                - master
