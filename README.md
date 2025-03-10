@@ -1,4 +1,4 @@
-# vSphere CSI chart
+# `vsphere-csi-driver-app`
 
 This repository contains the chart which is used for deploying the vSphere CSI (Container Storage Interface) driver on Giant Swarm CAPV clusters.
 
