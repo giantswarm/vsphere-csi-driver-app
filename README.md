@@ -18,3 +18,7 @@ This target applies custom patches to the chart which cannot be handled by Kusto
 ### `make increase-chart-version`
 
 This target should be run last as it increases the version of the chart in the `Chart.yaml` file in the `helm` directory (the earlier targets may overwrite this file).
+
+## Compatibility
+
+Compatibility with Kubernetes versions is documented in the [upstream repository](https://github.com/kubernetes-sigs/vsphere-csi-driver?tab=readme-ov-file#vsphere-csi-driver-releases).
