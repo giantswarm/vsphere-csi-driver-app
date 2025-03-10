@@ -3,7 +3,7 @@ name: vsphere-csi-driver
 # repo: kubernetes-sigs/vsphere-csi-driver
 appVersion: 3.3.0
 # repo: kubernetes-sigs/vsphere-csi-driver
-version: 3.4.0
+version: 3.4.1
 description: A Helm chart for vSphere CSI (Container Storage Interface) Driver
 home: https://github.com/giantswarm/vsphere-csi-driver-app
 keywords:
