@@ -1,65 +1,20 @@
-# {APP-NAME} chart
+# vSphere CSI chart
 
-This app has been archived on behalf of: https://github.com/giantswarm/cloud-provider-vsphere-app/tree/main/helm/cloud-provider-vsphere/charts/vsphere-csi-driver
+This repository contains the chart which is used for deploying the vSphere CSI (Container Storage Interface) driver on Giant Swarm CAPV clusters.
 
+## Updating the chart
 
-Giant Swarm offers a {APP-NAME} App which can be installed in workload clusters.
-Here we define the {APP-NAME} chart with its templates and default configuration.
+Updates are handled via the `Makefile.custom.mk` Makefile which has three targets.
 
-**What is this app?**
-**Why did we add it?**
-**Who can use it?**
+### `make update-csi-chart`
 
-## Installing
+Updates to the chart are handled by Renovate via the [Chart.yaml](./config/vsphere-csi-driver/overwrites/Chart.yaml) in the overwrites `directory`. When this target is run,
+the chart is updated from the [upstream repository](https://github.com/kubernetes-sigs/vsphere-csi-driver) to the version specified in `Chart.yaml` in the `overwrites` directory.
 
-There are 3 ways to install this app onto a workload cluster.
+### `make apply-custom-patches-for-csi`
 
-1. [Using our web interface](https://docs.giantswarm.io/ui-api/web/app-platform/#installing-an-app)
-2. [Using our API](https://docs.giantswarm.io/api/#operation/createClusterAppV5)
-3. Directly creating the [App custom resource](https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/) on the management cluster.
+This target applies custom patches to the chart which cannot be handled by Kustomize.
 
-## Configuring
+### `make increase-chart-version`
 
-### values.yaml
-**This is an example of a values file you could upload using our web interface.**
-```
-# values.yaml
-
-```
-
-### Sample App CR and ConfigMap for the management cluster
-If you have access to the Kubernetes API on the management cluster, you could create
-the App CR and ConfigMap directly.
-
-Here is an example that would install the app to
-workload cluster `abc12`:
-
-```
-# appCR.yaml
-
-```
-
-```
-# user-values-configmap.yaml
-
-
-```
-
-See our [full reference page on how to configure applications](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
-
-## Compatibility
-
-This app has been tested to work with the following workload cluster release versions:
-
-*
-
-## Limitations
-
-Some apps have restrictions on how they can be deployed.
-Not following these limitations will most likely result in a broken deployment.
-
-*
-
-## Credit
-
-* {APP HELM REPOSITORY}
+This target should be run last as it increases the version of the chart in the `Chart.yaml` file in the `helm` directory (the earlier targets may overwrite this file).
