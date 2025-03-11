@@ -8,7 +8,7 @@ YQ = ./bin/yq
 YQ_VERSION := 4.45.1
 
 .PHONY: all
-all: update-csi-chart apply-custom-patches-for-csi increase-chart-version
+all: update-csi-chart apply-custom-patches-for-csi
 	@$(call say,Sync has been done ✓)
 
 .PHONY: update-csi-chart
@@ -21,11 +21,6 @@ apply-custom-patches-for-csi: $(YQ) ## apply giantswarm specific patches that ar
 	@$(call say,Custom yq magic for CSI)
 	./hack/custom-patches.sh
 	./hack/common-labels-injector.sh
-
-.PHONY: increase-chart-version
-increase-chart-version:
-	@$(call say,Increase parent chart SemVer version)
-	./hack/increase-chart-version.sh
 
 $(KUSTOMIZE): ## Download kustomize locally if necessary.
 	@$(call say,Download Kustomize)
