@@ -4,7 +4,7 @@ This repository contains the chart which is used for deploying the vSphere CSI (
 
 ## Updating the chart
 
-Updates are handled via the `Makefile.custom.mk` Makefile which has three targets.
+Updates are handled via the `Makefile.custom.mk` Makefile which has two targets.
 
 ### `make update-csi-chart`
 
@@ -14,10 +14,6 @@ the chart is updated from the [upstream repository](https://github.com/kubernete
 ### `make apply-custom-patches-for-csi`
 
 This target applies custom patches to the chart which cannot be handled by Kustomize.
-
-### `make increase-chart-version`
-
-This target should be run last as it increases the version of the chart in the `Chart.yaml` file in the `helm` directory (the earlier targets may overwrite this file).
 
 ## Compatibility
 
