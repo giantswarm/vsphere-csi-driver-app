@@ -131,7 +131,7 @@
                         "tag": {
                             "type": "string",
                             "title": "tag",
-                            "default": "v1.29.9"
+                            "default": "1.29.9"
                         }
                     }
                 }
