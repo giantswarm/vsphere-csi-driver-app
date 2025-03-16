@@ -32,7 +32,7 @@ on:
 jobs:
   debug_info:
     name: Debug info
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Print github context JSON
         run: |
@@ -41,7 +41,7 @@ jobs:
           EOF
   gather_facts:
     name: Gather facts
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       repo_name: ${{ steps.gather_facts.outputs.repo_name }}
       branch: ${{ steps.gather_facts.outputs.branch }}
@@ -138,7 +138,7 @@ jobs:
           fi
   prepare_release_pr:
     name: Prepare release PR for Backstage project
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs:
       - gather_facts
     if: ${{ needs.gather_facts.outputs.skip != 'true' && github.repository == 'giantswarm/backstage' }}
@@ -148,7 +148,7 @@ jobs:
           ref: ${{ needs.gather_facts.outputs.branch }}
       - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
-          node-version: '20'
+          node-version: '22'
       - uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
         with:
           cmd: install
@@ -175,7 +175,7 @@ jobs:
           git push "${remote_repo}" HEAD:${{ needs.gather_facts.outputs.branch }}
   create_release_pr:
     name: Create release PR
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs:
       - gather_facts
       - prepare_release_pr
@@ -185,7 +185,7 @@ jobs:
     steps:
       - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
         with:
-          go-version: '=1.23'
+          go-version: '=1.24.1'
       - name: Install architect
         uses: giantswarm/install-binary-action@c37eb401e5092993fc76d545030b1d1769e61237 # v3.0.0
         with:
