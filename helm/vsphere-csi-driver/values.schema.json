@@ -111,6 +111,24 @@
                 }
             }
         },
+        "controller": {
+            "type": "object",
+            "title": "vSphere CSI Controller",
+            "description": "Controller configuration",
+            "additionalProperties": false,
+            "properties": {
+                "affinity": {
+                    "type": "object",
+                    "title": "affinity",
+                    "description": "Set deployment affinity"
+                },
+                "tolerations": {
+                    "type": "array",
+                    "title": "tolerations",
+                    "description": "Set deployment tolerations"
+                }
+            }
+        },
         "initContainer": {
             "type": "object",
             "title": "Init container",

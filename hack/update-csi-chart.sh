@@ -28,7 +28,8 @@ cp -R \
 
 # Customizations
 
-${KUSTOMIZE} build "./config/vsphere-csi-driver" -o "./config/vsphere-csi-driver/tmp"
+mkdir -p "./config/vsphere-csi-driver/tmp/"
+${KUSTOMIZE} build "./config/vsphere-csi-driver" -o "./config/vsphere-csi-driver/tmp/"
 
 find \
   "./config/vsphere-csi-driver/tmp/" \

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update upstream chart to `v3.3.1`
+- Make deployment `affinity` and `tolerations` configurable in `values.yaml`.
+
 ## [3.4.2] - 2025-03-17
 
 ### Fixed

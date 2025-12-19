@@ -26,3 +26,33 @@ storageClass:
   enabled: true
   fileSystem: ext4
   reclaimPolicy: Delete
+controller:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+          - matchExpressions:
+              - key: node-role.kubernetes.io/controlplane
+                operator: Exists
+          - matchExpressions:
+              - key: node-role.kubernetes.io/master
+                operator: Exists
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - vsphere-csi-controller
+          topologyKey: kubernetes.io/hostname
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Exists
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Exists
