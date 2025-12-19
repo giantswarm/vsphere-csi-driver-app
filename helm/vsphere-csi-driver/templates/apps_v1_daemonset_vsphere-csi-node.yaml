@@ -65,7 +65,7 @@ spec:
               fieldPath: metadata.namespace
         - name: NODEGETINFO_WATCH_TIMEOUT_MINUTES
           value: "1"
-        image: gsoci.azurecr.io/giantswarm/csi-vsphere-driver:v3.3.0
+        image: gsoci.azurecr.io/giantswarm/csi-vsphere-driver:v3.3.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
