@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.3] - 2025-12-19
+
 ### Changed
 
 - Update upstream chart to `v3.3.1`
@@ -35,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add upstream chart at `v3.3.0`.
 - Add repo scaffolding to generate the chart.
 
-[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.2...HEAD
+[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.3...HEAD
+[3.4.3]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.2...v3.4.3
 [3.4.2]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.1...v3.4.2
 [3.4.1]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.0...v3.4.1
 [3.4.0]: https://github.com/giantswarm/vsphere-csi-driver-app/releases/tag/v3.4.0
