@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.4] - 2026-06-15
+
 ### Changed
 
 - Update app icon to the Giant Swarm vSphere icon (`https://s.giantswarm.io/app-icons/vsphere/2/icon-light.png`), replacing the upstream third-party logo.
@@ -41,7 +43,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add upstream chart at `v3.3.0`.
 - Add repo scaffolding to generate the chart.
 
-[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.3...HEAD
+[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.4...HEAD
+[3.4.4]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.3...v3.4.4
 [3.4.3]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.2...v3.4.3
 [3.4.2]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.1...v3.4.2
 [3.4.1]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.0...v3.4.1
