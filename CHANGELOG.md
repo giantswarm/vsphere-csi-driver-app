@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update app icon to the Giant Swarm vSphere icon (`https://s.giantswarm.io/app-icons/vsphere/2/icon-light.png`), replacing the upstream third-party logo.
+
 ## [3.4.3] - 2025-12-19
 
 ### Changed
