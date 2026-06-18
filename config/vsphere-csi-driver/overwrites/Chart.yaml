@@ -10,7 +10,7 @@ keywords:
   - vsphere
   - vmware
   - csi
-icon: https://raw.githubusercontent.com/kubernetes/cloud-provider-vsphere/master/docs/vmware_logo.png
+icon: https://s.giantswarm.io/app-icons/vsphere/2/icon-light.png
 sources:
   - https://github.com/kubernetes-sigs/vsphere-csi-driver
 annotations:
