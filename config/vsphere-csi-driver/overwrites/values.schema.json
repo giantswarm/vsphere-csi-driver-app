@@ -16,11 +16,13 @@
             "properties": {
                 "clusterId": {
                     "type": "string",
-                    "title": "Cluster ID"
+                    "title": "Cluster ID",
+                    "default": ""
                 },
                 "datacenter": {
                     "type": "string",
-                    "title": "Datacenter"
+                    "title": "Datacenter",
+                    "default": ""
                 },
                 "password": {
                     "type": "string",
@@ -40,7 +42,8 @@
                 },
                 "vcenter": {
                     "type": "string",
-                    "title": "vCenter address"
+                    "title": "vCenter address",
+                    "default": ""
                 },
                 "zone": {
                     "type": "string",
@@ -120,12 +123,74 @@
                 "affinity": {
                     "type": "object",
                     "title": "affinity",
-                    "description": "Set deployment affinity"
+                    "description": "Set deployment affinity",
+                    "default": {
+                        "nodeAffinity": {
+                            "requiredDuringSchedulingIgnoredDuringExecution": {
+                                "nodeSelectorTerms": [
+                                    {
+                                        "matchExpressions": [
+                                            {
+                                                "key": "node-role.kubernetes.io/control-plane",
+                                                "operator": "Exists"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matchExpressions": [
+                                            {
+                                                "key": "node-role.kubernetes.io/controlplane",
+                                                "operator": "Exists"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matchExpressions": [
+                                            {
+                                                "key": "node-role.kubernetes.io/master",
+                                                "operator": "Exists"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "podAntiAffinity": {
+                            "requiredDuringSchedulingIgnoredDuringExecution": [
+                                {
+                                    "labelSelector": {
+                                        "matchExpressions": [
+                                            {
+                                                "key": "app",
+                                                "operator": "In",
+                                                "values": [
+                                                    "vsphere-csi-controller"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "topologyKey": "kubernetes.io/hostname"
+                                }
+                            ]
+                        }
+                    }
                 },
                 "tolerations": {
                     "type": "array",
                     "title": "tolerations",
-                    "description": "Set deployment tolerations"
+                    "description": "Set deployment tolerations",
+                    "default": [
+                        {
+                            "effect": "NoSchedule",
+                            "key": "node-role.kubernetes.io/master",
+                            "operator": "Exists"
+                        },
+                        {
+                            "effect": "NoSchedule",
+                            "key": "node-role.kubernetes.io/control-plane",
+                            "operator": "Exists"
+                        }
+                    ]
                 }
             }
         },
