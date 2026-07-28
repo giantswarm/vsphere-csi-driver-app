@@ -1,0 +1,11 @@
+checks:
+  exclude:
+    - "unset-memory-requirements"
+    - "drop-net-raw-capability"
+    - "host-network"
+    - "no-read-only-root-fs"
+    - "privilege-escalation-container"
+    - "privileged-container"
+    - "run-as-non-root"
+    - "unset-cpu-requirements"
+    - "sensitive-host-mounts"
