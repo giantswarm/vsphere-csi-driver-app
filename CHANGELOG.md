@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update dependency kubernetes-sigs/vsphere-csi-driver to v3.7.1.
+- Update dependency kubernetes-sigs/vsphere-csi-driver to v3.7.2.
 - chore: update values schema to ensure chart passes validation
+- Helpers: Replace `+` in version label.
 
 ## [3.4.4] - 2026-06-15
 
