@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.6] - 2026-08-07
+
 ### Changed
 
 - Update dependency kubernetes-sigs/vsphere-csi-driver to v3.7.3
@@ -55,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add upstream chart at `v3.3.0`.
 - Add repo scaffolding to generate the chart.
 
-[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.5...HEAD
+[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.6...HEAD
+[3.4.6]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.5...v3.4.6
 [3.4.5]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.4...v3.4.5
 [3.4.4]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.3...v3.4.4
 [3.4.3]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.2...v3.4.3
