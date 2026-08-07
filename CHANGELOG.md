@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update dependency kubernetes-sigs/vsphere-csi-driver to v3.7.3
+
 ## [3.4.5] - 2026-08-03
 
 ### Changed
