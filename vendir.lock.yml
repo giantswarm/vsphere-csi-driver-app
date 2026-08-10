@@ -1,0 +1,15 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: Update deployment yaml files for v3.7.3 (#4189)
+      sha: 27ec91d0a0fc820724cc5d7a0a2f69d12bc4ff34
+      tags:
+      - v3.7.3
+    path: vsphere-csi-driver
+  path: vendor
+- contents:
+  - directory: {}
+    path: .
+  path: sync/kustomize/input
+kind: LockConfig

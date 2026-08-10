@@ -1,0 +1,19 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+  - path: vendor
+    contents:
+      - path: vsphere-csi-driver
+        git:
+          depth: 1
+          url: https://github.com/kubernetes-sigs/vsphere-csi-driver
+          ref: "v3.7.3"
+        includePaths:
+          - manifests/vanilla/vsphere-csi-driver.yaml
+  # Copy the vanilla manifest next to the kustomization so that kustomize can
+  # load it without relaxing its load restrictor.
+  - path: sync/kustomize/input
+    contents:
+      - path: .
+        directory:
+          path: vendor/vsphere-csi-driver/manifests/vanilla
