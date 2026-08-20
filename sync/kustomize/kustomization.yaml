@@ -6,5 +6,5 @@ resources:
 - input/vsphere-csi-driver.yaml
 patches:
 - path: patches/daemonset-csi-node-driver-registrar-initcontainer.yaml
-- path: patches/deployment-images.yaml
+- path: patches/deployment-replicas.yaml
 - path: patches/internal-feature-states-topology.yaml

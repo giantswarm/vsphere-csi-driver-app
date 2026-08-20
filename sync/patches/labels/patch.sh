@@ -1,17 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -euo pipefail
+SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ; readonly SCRIPT_DIR
+source "${SCRIPT_DIR}"/../../_helpers.sh
+cd "${REPO_DIR}"
 
-base_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-
-TEMPLATE_FOLDER="$base_dir/helm/vsphere-csi-driver/templates"
-
-for file in "$TEMPLATE_FOLDER"/*yaml
+for file in "${CHART_DIR}"/templates/*yaml
 do
-  echo "Dropping unnecessary labels"
-  sed -i "/kube-vip-cloud-provider.labels/d" "$file"
-  sed -i "/kube-vip.labels/d" "$file"
-
   echo "Injecting common labels to $file"
   if grep -q "labels.common" < "$file"; then
         echo "Common labels already exist.Skipping"
@@ -29,7 +23,7 @@ do
   fi
 
   if ! grep -q "^  labels:" < "$file"; then
-    # labels section doesn't exist. adding it.
+    # labels section doesn't exist. adding it.
     injected='{{- include "labels.common" $ | nindent 4 }}'
     sed -i -z "s/\nmetadata:\n/\nmetadata:\n  labels:\n    $injected\n/g" "$file"
   fi

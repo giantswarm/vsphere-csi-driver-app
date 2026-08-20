@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>giantswarm/renovate-presets:default.json5"
-  ]
+    "github>giantswarm/renovate-presets:default.json5",
+    "github>giantswarm/renovate-presets:disable-helmv3.json5",
+    "github>giantswarm/renovate-presets:disable-helm-values.json5",
+  ],
+  "prBodyNotes": [
+    "DO NOT merge this PR directly; you must check out the PR and run the sync script at `sync/sync.sh`.",
+  ],
 }
