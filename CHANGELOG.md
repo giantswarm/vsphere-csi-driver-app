@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Use `vendir` to vendor the upstream manifest, and move all patches into the `sync` directory.
 - Pin the upstream version in `vendir.yml` instead of `Chart.yaml`. The chart version is no longer overwritten with the upstream version during a sync.
+- Update architect to v10.10.0 (giantswarm/vsphere-csi-driver-app#221)
 
 ## [3.4.6] - 2026-08-07
 
