@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pin the upstream version in `vendir.yml` instead of `Chart.yaml`. The chart version is no longer overwritten with the upstream version during a sync.
 - Update architect to v10.10.0 (giantswarm/vsphere-csi-driver-app#221)
 - Update architect to v10.11.1 (giantswarm/vsphere-csi-driver-app#222)
+- Update architect to v10.12.0 (giantswarm/vsphere-csi-driver-app#225)
 
 ## [3.4.6] - 2026-08-07
 
