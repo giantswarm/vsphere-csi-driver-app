@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update architect to v10.12.1 (giantswarm/vsphere-csi-driver-app#226)
 - Update architect to v10.12.2 (giantswarm/vsphere-csi-driver-app#228)
 - Update architect to v10.13.0 (giantswarm/vsphere-csi-driver-app#232)
+- Update architect to v10.13.1 (giantswarm/vsphere-csi-driver-app#233)
 
 ## [3.4.6] - 2026-08-07
 
