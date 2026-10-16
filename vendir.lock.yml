@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: Update deployment yaml files for v3.7.3 (#4189)
-      sha: 27ec91d0a0fc820724cc5d7a0a2f69d12bc4ff34
+      commitTitle: update vsphere-csi manifests for new tag v3.8.0 (#4297)
+      sha: ea22784498c1c157d08c826de3c9d0872caf03f5
       tags:
-      - v3.7.3
+      - v3.8.0
     path: vsphere-csi-driver
   path: vendor
 - contents:
