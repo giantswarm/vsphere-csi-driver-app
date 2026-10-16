@@ -7,11 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-
-- The `helm.sh/chart` label is valid for long chart versions: the 63-character cut trims the whole trailing run of `-`, `.` and `_`.
-- Fix changelog generation script.
-
 ### Changed
 
 - Use `vendir` to vendor the upstream manifest, and move all patches into the `sync` directory.
@@ -25,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update architect to v10.13.0 (giantswarm/vsphere-csi-driver-app#232)
 - Update architect to v10.13.1 (giantswarm/vsphere-csi-driver-app#233)
 - Update architect to v10.13.5 (giantswarm/vsphere-csi-driver-app#236)
+- Use Linux tools to manipulate chart label instead of an inscrutable Perl command.
+
+### Fixed
+
+- The `helm.sh/chart` label is valid for long chart versions: the 63-character cut trims the whole trailing run of `-`, `.` and `_`.
+- Fix changelog generation script.
 
 ## [3.4.6] - 2026-08-07
 
