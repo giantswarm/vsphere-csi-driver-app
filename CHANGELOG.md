@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update architect to v10.13.1 (giantswarm/vsphere-csi-driver-app#233)
 - Update architect to v10.13.5 (giantswarm/vsphere-csi-driver-app#236)
 - Use Linux tools to manipulate chart label instead of an inscrutable Perl command.
+- Update architect to v10.14.7 (giantswarm/vsphere-csi-driver-app#239)
 
 ### Fixed
 
