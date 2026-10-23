@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update upstream vshere-csi-driver chart to v3.8.0.
+
 - Update upstream kubernetes-sigs/vsphere-csi-driver chart to v3.8.0.
 
 ### Fixed
