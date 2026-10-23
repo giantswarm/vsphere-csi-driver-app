@@ -10,12 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update upstream vshere-csi-driver chart to v3.8.0.
-
-- Update upstream kubernetes-sigs/vsphere-csi-driver chart to v3.8.0.
-
-### Fixed
-
-- The `helm.sh/chart` label is valid for long chart versions: the 63-character cut trims the whole trailing run of `-`, `.` and `_`.
+- Use the `giantswarm-release` GitHub App instead of the taylorbot personal access token to push sync commits.
 - Use `vendir` to vendor the upstream manifest, and move all patches into the `sync` directory.
 - Pin the upstream version in `vendir.yml` instead of `Chart.yaml`. The chart version is no longer overwritten with the upstream version during a sync.
 - Update architect to v10.10.0 (giantswarm/vsphere-csi-driver-app#221)
@@ -23,7 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update architect to v10.12.0 (giantswarm/vsphere-csi-driver-app#225)
 - Update architect to v10.12.1 (giantswarm/vsphere-csi-driver-app#226)
 - Update architect to v10.12.2 (giantswarm/vsphere-csi-driver-app#228)
+- Add Github action to create an issue in `giantswarm/giantswarm` for Team Rocket on vendir updates.
 - Update architect to v10.13.0 (giantswarm/vsphere-csi-driver-app#232)
+- Update architect to v10.13.1 (giantswarm/vsphere-csi-driver-app#233)
+- Update architect to v10.13.5 (giantswarm/vsphere-csi-driver-app#236)
+- Use Linux tools to manipulate chart label instead of an inscrutable Perl command.
+- Update architect to v10.14.7 (giantswarm/vsphere-csi-driver-app#239)
+- Update actions/create-github-app-token to v3.3.0 (giantswarm/vsphere-csi-driver-app#250)
+- Update architect to v10.14.18 (giantswarm/vsphere-csi-driver-app#251)
+
+### Fixed
+
+- The `helm.sh/chart` label is valid for long chart versions: the 63-character cut trims the whole trailing run of `-`, `.` and `_`.
+- Fix changelog generation script.
 
 ## [3.4.6] - 2026-08-07
 
