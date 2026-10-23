@@ -25,7 +25,7 @@ spec:
           value: /csi/csi.sock
         - name: DRIVER_REG_SOCK_PATH
           value: /var/lib/kubelet/plugins/csi.vsphere.vmware.com/csi.sock
-        image: gsoci.azurecr.io/giantswarm/csi-node-driver-registrar:v2.13.0
+        image: gsoci.azurecr.io/giantswarm/csi-node-driver-registrar:v2.14.0
         livenessProbe:
           exec:
             command:
@@ -63,7 +63,7 @@ spec:
               fieldPath: metadata.namespace
         - name: NODEGETINFO_WATCH_TIMEOUT_MINUTES
           value: "1"
-        image: gsoci.azurecr.io/giantswarm/csi-vsphere-driver:v3.7.3
+        image: gsoci.azurecr.io/giantswarm/csi-vsphere-driver:v3.8.0
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -99,7 +99,7 @@ spec:
       - args:
         - --v=4
         - --csi-address=/csi/csi.sock
-        image: gsoci.azurecr.io/giantswarm/livenessprobe:v2.15.0
+        image: gsoci.azurecr.io/giantswarm/livenessprobe:v2.17.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi

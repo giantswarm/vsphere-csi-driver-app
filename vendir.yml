@@ -7,7 +7,7 @@ directories:
         git:
           depth: 1
           url: https://github.com/kubernetes-sigs/vsphere-csi-driver
-          ref: "v3.7.3"
+          ref: "v3.8.0"
         includePaths:
           - manifests/vanilla/vsphere-csi-driver.yaml
   # Copy the vanilla manifest next to the kustomization so that kustomize can

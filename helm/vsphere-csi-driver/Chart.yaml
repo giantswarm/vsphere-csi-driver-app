@@ -1,7 +1,7 @@
 apiVersion: v2
 name: vsphere-csi-driver
 # upstream version
-appVersion: 3.7.3
+appVersion: 3.8.0
 # giantswarm app version
 version: 3.4.6
 description: A Helm chart for vSphere CSI (Container Storage Interface) Driver
@@ -16,4 +16,4 @@ sources:
 annotations:
   application.giantswarm.io/team: "rocket"
   io.giantswarm.application.upstream-chart-url: "https://github.com/kubernetes-sigs/vsphere-csi-driver"
-  io.giantswarm.application.upstream-chart-version: "3.7.3"
+  io.giantswarm.application.upstream-chart-version: "3.8.0"

@@ -35,17 +35,37 @@ function out(line) {
     }
     print line
 }
+# print the Unreleased section: one Changed section with the entry first, then
+# the other sections in their original order
+function flush(    i) {
+    out("### Changed") ; out("") ; out(entry)
+    for (i = 1; i <= n_changed; i++) { out(changed[i]) }
+    if (n_other) { out("") }
+    for (i = 1; i <= n_other; i++) { out(other[i]) }
+}
 $0 == "## [Unreleased]" {
-    out($0) ; out("") ; out("### Changed") ; out("") ; out(entry)
+    out($0) ; out("")
     in_unreleased = 1
+    section = "### Changed"
     next
 }
 # the next release heading ends the Unreleased section
-in_unreleased && /^## \[/ { in_unreleased = 0 }
-# drop the heading we just printed and the entry from any previous run
-in_unreleased && $0 == "### Changed" { next }
-in_unreleased && index($0, prefix) == 1 { next }
+in_unreleased && /^## \[/ { flush() ; out("") ; in_unreleased = 0 }
+# collect the Unreleased section. merge all Changed sections into one list, and
+# drop the entry from any previous run.
+in_unreleased {
+    if (/^### /) {
+        section = $0
+        if (section != "### Changed") { other[++n_other] = $0 }
+    } else if (section != "### Changed") {
+        other[++n_other] = $0
+    } else if ($0 != "" && index($0, prefix) != 1) {
+        changed[++n_changed] = $0
+    }
+    next
+}
 { out($0) }
+END { if (in_unreleased) { flush() } }
 ' "${CHANGELOG}" > "${TMP_FILE}"
 
 # keep the mode of the existing file
