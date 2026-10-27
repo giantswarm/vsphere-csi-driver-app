@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Create the vendir update issue as the `giantswarm-project-automation` GitHub App instead of architectbot's `ISSUE_AUTOMATION` token (giantswarm/giantswarm#38800).
 - Update upstream vsphere-csi-driver chart to v3.8.0.
 - Use the `giantswarm-release` GitHub App instead of the taylorbot personal access token to push sync commits.
 - Use `vendir` to vendor the upstream manifest, and move all patches into the `sync` directory.
