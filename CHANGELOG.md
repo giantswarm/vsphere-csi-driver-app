@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update architect to v10.14.18 (giantswarm/vsphere-csi-driver-app#251)
 - Improve changelog generation script.
 - Update architect to v10.16.3 (giantswarm/vsphere-csi-driver-app#254)
+- Update architect to v10.16.6 (giantswarm/vsphere-csi-driver-app#258)
 
 ### Fixed
 
