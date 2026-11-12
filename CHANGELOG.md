@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.0] - 2026-11-11
+
 ### Changed
 
 - Create the vendir update issue as the `giantswarm-project-automation` GitHub App instead of architectbot's `ISSUE_AUTOMATION` token, and take the board item when the board's auto-add adds it first (giantswarm/giantswarm#38800).
@@ -89,7 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add upstream chart at `v3.3.0`.
 - Add repo scaffolding to generate the chart.
 
-[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.6...HEAD
+[Unreleased]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.5.0...HEAD
+[3.5.0]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.6...v3.5.0
 [3.4.6]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.5...v3.4.6
 [3.4.5]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.4...v3.4.5
 [3.4.4]: https://github.com/giantswarm/vsphere-csi-driver-app/compare/v3.4.3...v3.4.4

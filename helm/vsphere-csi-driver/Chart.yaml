@@ -3,7 +3,7 @@ name: vsphere-csi-driver
 # upstream version
 appVersion: 3.8.0
 # giantswarm app version
-version: 3.4.6
+version: 3.5.0
 description: A Helm chart for vSphere CSI (Container Storage Interface) Driver
 home: https://github.com/giantswarm/vsphere-csi-driver-app
 keywords:
