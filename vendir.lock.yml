@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: Fix driver and syncer image paths in v3.8.0 vanilla manifest (#4352)...
-      sha: 9bcf339ca511ff03e39031f2d7af30a1d2e00579
+      commitTitle: Update deployment yaml files for v3.8.1 (#4454)
+      sha: b710044bba1e8c22f3080d9e101a3f957109bd6f
       tags:
-      - v3.8.0
+      - v3.8.1
     path: vsphere-csi-driver
   path: vendor
 - contents:
