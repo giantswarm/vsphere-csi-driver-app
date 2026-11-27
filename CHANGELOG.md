@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update carvel-dev/vendir to v0.47.0 (giantswarm/vsphere-csi-driver-app#275)
 - Update architect to v10.17.5 (giantswarm/vsphere-csi-driver-app#274)
 - Update architect to v10.19.0 (giantswarm/vsphere-csi-driver-app#281)
 
